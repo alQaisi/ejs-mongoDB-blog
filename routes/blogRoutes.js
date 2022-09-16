@@ -3,11 +3,14 @@ const { blog_index, blog_create_get, blog_create_post, blog_detailes, blog_delet
 
 const router=express.Router();
 
-router.get("/",blog_index);
-router.post("/",blog_create_post);
-router.get("/create",blog_create_get);
-router.get("/:id",blog_detailes);
-router.delete("/:id",blog_delete);
+router.route("/")
+    .get(blog_index)
+    .post(blog_create_post);
 
+router.get("/create",blog_create_get);
+
+router.route("/:id")
+    .get(blog_detailes)
+    .delete(blog_delete);
 
 module.exports=router;
